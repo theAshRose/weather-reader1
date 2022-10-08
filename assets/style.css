@@ -1,0 +1,56 @@
+* {
+    box-sizing:border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: end;
+    color: white;
+    background-color:darkblue;
+    height: 200px;
+    font-style:italic;
+}
+header h1{
+    margin-right: 20px;
+}
+
+body{
+    background-color: whitesmoke;
+    min-height: 100vh;
+
+}
+aside {
+    margin-top: 50px;
+    margin-left: 15px;
+    margin-right:50px;
+}
+
+#button-wrapper {
+    background-color: lightgrey;
+    border-style: line;
+    border-width:10px;
+    border-radius: 25px;
+}
+
+section {
+    border-style: line;
+    border-radius: 15px;
+    border-width:5px;
+    margin-left: 20px;
+}
+
+ul {
+    margin-right: 40px;
+}
+li.btn {
+    
+    border-style: line;
+    border-width:3px;
+    background-color:grey;
+    color: black;
+}
+
+li::marker {
+    display: none;
+}
