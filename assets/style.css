@@ -38,6 +38,12 @@ section {
     border-radius: 15px;
     border-width:5px;
     margin-left: 20px;
+    background-color: tan;
+    padding-bottom: 5px;
+}
+
+#today {
+    background-color: tan;
 }
 
 ul {
@@ -54,3 +60,14 @@ li.btn {
 li::marker {
     display: none;
 }
+
+#today-city-date {
+    padding-left: 30px;
+    padding-top: 25px;
+}
+
+#today {
+    padding-bottom: 7px;
+    padding-left:10px;
+}
+
