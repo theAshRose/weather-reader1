@@ -1,8 +1,5 @@
-let weatherData = [];
-
-let buttonList = $("#city-list")
-let appendedButton = $(("<li><button>"))
-
+let weatherData = []; //empty array for weather data
+let buttonList = $("#city-list") //what we append on page load and submit
 
 
 let getWeather = function (input) {
@@ -19,20 +16,19 @@ let getWeather = function (input) {
         fetch(citiLoco).then(function(targetWeather){
             return targetWeather.json()
         }).then(function(weatherData){
-            $("#today").show();
+            $("#today").show(); //we are showing the weather pages after the data has been retrieved
             $("#main-row").show();
-            console.log(weatherData)
-            $("#today-city-date").text(weatherData.city.name + " " + moment().format("M/D/Y"))
-            $("#today-icon").attr("src", "https://openweathermap.org/img/wn/"+weatherData.list[0].weather[0].icon+"@2x.png")
-            $("#today").children().eq(1).text("Temperature: " + weatherData.list[0].main.temp)
+            $("#today-city-date").text(weatherData.city.name + " " + moment().format("M/D/Y")) //using weather data and moment JS to show the city and time
+            $("#today-icon").attr("src", "https://openweathermap.org/img/wn/"+weatherData.list[0].weather[0].icon+"@2x.png") //this populates the icon
+            $("#today").children().eq(1).text("Temperature: " + weatherData.list[0].main.temp) 
             $("#today").children().eq(2).text("Wind speeds: " + weatherData.list[0].wind.speed)
             $("#today").children().eq(3).text("Humidity: " + weatherData.list[0].main.humidity)
             for (x=1; x <  6; x++) {
-                $("#" + x).children().eq(0).text(moment().add(x, "d").format("M/D/Y"))
-                $("#" + x).children().eq(1).attr("src", "https://openweathermap.org/img/wn/"+weatherData.list[4*x+2].weather[0].icon+"@2x.png")
-                $("#" + x).children().eq(2).text("Temperature: " + weatherData.list[4*x+2].main.temp)
-                $("#" + x).children().eq(3).text("Wind speeds: " + weatherData.list[4*x+2].wind.speed)
-                $("#" + x).children().eq(4).text("Humidity: " + weatherData.list[4*x+2].main.humidity)
+                $("#" + x).children().eq(0).text(moment().add(x, "d").format("M/D/Y")) //using a for loop with some simple math
+                $("#" + x).children().eq(1).attr("src", "https://openweathermap.org/img/wn/"+weatherData.list[8*x-1].weather[0].icon+"@2x.png")
+                $("#" + x).children().eq(2).text("Temperature: " + weatherData.list[8*x-1].main.temp)
+                $("#" + x).children().eq(3).text("Wind speeds: " + weatherData.list[8*x-1].wind.speed)
+                $("#" + x).children().eq(4).text("Humidity: " + weatherData.list[8*x-1].main.humidity)
             }
         })
     }) 
@@ -48,7 +44,8 @@ $("#searchBtn").on("click" || "submit", function(event){
     let buttonString = JSON.parse(localStorage.getItem("buttonString")) || [];
     if (!userInput) {
         alert("invalid input")
-    }   else 
+    }   else {
+        let appendedButton = $(("<li></li>"))
         appendedButton.text(userInput)
         appendedButton.attr("id", userInput)
         appendedButton.addClass("weather btn btn-block")
@@ -59,10 +56,10 @@ $("#searchBtn").on("click" || "submit", function(event){
     // if (weatherData.length === !0) {
     //     for (x = 0; x < weatherData.length)
     // }
-    
+    }  
 })
 
-appendedButton.on("click", function(event){
+$(".btn").on("click", function(event){
     let buttonValue = $(event.target).attr("id")
     getWeather(buttonValue)
 })
@@ -73,6 +70,7 @@ let pageLoad = function(){
     let buttonString = JSON.parse(localStorage.getItem("buttonString")) || [];
     ///COULD PUT NEW APPENDED BUTTON HERE MAYBE IDK LOL
         buttonString.forEach(function(city){
+            let appendedButton = $(("<li></li>"))
             appendedButton.text(city)
             appendedButton.attr("id", city)
             appendedButton.addClass("weather btn btn-block")
