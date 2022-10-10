@@ -6,7 +6,7 @@ let appendedButton = $(("<li><button>"))
 
 
 let getWeather = function (input) {
-    let cityCoord = "http://api.openweathermap.org/geo/1.0/direct?q=%22"+input+"%22&appid=0b2d7b88e4b40f17049aa4aac12a4c03"
+    let cityCoord = "https://api.openweathermap.org/geo/1.0/direct?q=%22"+input+"%22&appid=0b2d7b88e4b40f17049aa4aac12a4c03"
     fetch(cityCoord)
     .then(function(latLon){
         return latLon.json();
